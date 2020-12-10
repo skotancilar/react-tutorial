@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Accordion from './components/Accordion';
-import Search from './components/Search'
+import Search from './components/Search';
+import Dropdown from './components/Dropdown';
+import Translate from './components/Translate'
 
 const items = [
    {
@@ -14,16 +16,27 @@ const items = [
    {
       title: "How do you use React?",
       content: 'You use React by creating components'
-   }]
+   }];
 
-class App extends React.Component {
-   render() {
-      return (
-         <div>
-            <Search />
-         </div>
-      )
-   }
-}
+const options = [
+   {
+      label: 'The Color Red',
+      value: 'red'
+   },
+   {
+      label: 'The Color Green',
+      value: 'breen'
+   },
+   {
+      label: 'The Color Blue',
+      value: 'blue'
+   }];
 
-export default App;
+// eslint-disable-next-line import/no-anonymous-default-export
+export default () => {
+   return (
+      <div style={{ margin: '20px' }}>
+         <Translate />
+      </div >
+   );
+};

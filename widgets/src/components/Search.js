@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 
 const Search = props => {
-   const [term, setTerm] = useState('skrillex');
+   const [debouncedTerm, setTerm] = useState('skrillex');
    const [results, setResults] = useState([])
 
    console.log(results);
@@ -16,27 +16,20 @@ const Search = props => {
                list: 'search',
                origin: '*',
                format: 'json',
-               srsearch: term,
+               srsearch: debouncedTerm,
             },
          });
 
          setResults(data.query.search);
       };
-      if (term && !results.length) {
-         search();
-      } else {
-         const timeoutId = setTimeout(() => {
-            if (term) {
-               search();
-            }
-         }, 1000);
 
-         return () => {
-            clearTimeout(timeoutId);
-         };
+
+      if (debouncedTerm) {
+         search();
       }
 
-   }, [term]);
+
+   }, [debouncedTerm]);
 
    const renderedResults = results.map((result) => {
       return (
