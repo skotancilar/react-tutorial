@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Accordion from './Accordion';
+// import Accordion from './Accordion';
 import Dropdown from './Dropdown';
 import Convert from './Convert';
 
